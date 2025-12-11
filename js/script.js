@@ -85,7 +85,6 @@
 //     });
 // }, 1000);
 
-
 // SplitText.create(".text.animated-text", {
 //   type: "words, chars, lines",
 //   onSplit(self) {
@@ -114,27 +113,67 @@
 //     }
 //   });
 
+// 444444444444444
 //   gsap.registerPlugin(SplitText);
 
-const element = document.querySelector(".text3.animated-text");
+// const element = document.querySelector(".text3.animated-text");
 
-// КРОК 1: Розбиваємо текст на рядки (це буде внутрішній контент, який рухається)
-const childSplit = new SplitText(element, {
-  type: "lines",
-  linesClass: "line-child" // Клас для внутрішнього тексту
-});
+// // КРОК 1: Розбиваємо текст на рядки (це буде внутрішній контент, який рухається)
+// const childSplit = new SplitText(element, {
+//   type: "lines",
+//   linesClass: "line-child" // Клас для внутрішнього тексту
+// });
 
-// КРОК 2: Розбиваємо текст ЩЕ РАЗ (обгортаємо попередні рядки в маску)
-const parentSplit = new SplitText(element, {
-  type: "lines",
-  linesClass: "line-mask" // Клас для маски (overflow: hidden)
-});
+// // КРОК 2: Розбиваємо текст ЩЕ РАЗ (обгортаємо попередні рядки в маску)
+// const parentSplit = new SplitText(element, {
+//   type: "lines",
+//   linesClass: "line-mask" // Клас для маски (overflow: hidden)
+// });
 
-// КРОК 3: Анімація
-gsap.from(childSplit.lines, {
-  duration: 1.5,
-  yPercent: 40, // Текст виїжджає знизу (на 100% своєї висоти)
-//   ease: "power4.out",
-  stagger: 0.5,  // Затримка між рядками
-  opacity: 0     // Можна додати для плавності, але для чистої маски часто прибирають
+// // КРОК 3: Анімація
+// gsap.from(childSplit.lines, {
+//   duration: 1.5,
+//   yPercent: 40, // Текст виїжджає знизу (на 100% своєї висоти)
+// //   ease: "power4.out",
+//   stagger: 0.5,  // Затримка між рядками
+//   opacity: 0     // Можна додати для плавності, але для чистої маски часто прибирають
+// });
+
+// 5555555555555
+// gsap.to(".selector", {
+//     duration: 5,
+//     // x: 300,
+//     // y: 100,
+//     scale: 0.2,
+//     // rotation: 360,
+//     opacity: 0.5,
+//     // stagger: .5,
+//     stagger: {
+//         each: 1,
+//         from: "center",
+//         grid: "auto",
+//         axis: "x",
+//     },
+//     ease: "elastic.out(1, 0.3)",
+// });
+
+let tween = gsap.to(".selector", {
+  duration: 1,
+  background: "#0026ffff",
+  scale: 0.2,
+  opacity: 0.5,
+  paused: true,
+  repeat: -1,
+  stagger: {
+    each: 0.1,
+    from: "center",
+    grid: "auto",
+    axis: "y",
+  },
+  ease: "power1.inOut",
+  onComplete: function(){ console.log("Анімація завершена"); },
+  onRepeat: function(){ console.log("Анімація повторюється"); },
+  onReverseComplete: function(){ console.log("Зворотна анімація завершена"); },
+  onStart: function(){ console.log("Анімація починається"); },
+  onUpdate: function(){ console.log("Анімація виконала один кадр"); },
 });

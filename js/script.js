@@ -157,23 +157,78 @@
 //     ease: "elastic.out(1, 0.3)",
 // });
 
-let tween = gsap.to(".selector", {
-  duration: 1,
-  background: "#0026ffff",
-  scale: 0.2,
-  opacity: 0.5,
-  paused: true,
-  repeat: -1,
-  stagger: {
-    each: 0.1,
-    from: "center",
-    grid: "auto",
-    axis: "y",
-  },
-  ease: "power1.inOut",
-  onComplete: function(){ console.log("Анімація завершена"); },
-  onRepeat: function(){ console.log("Анімація повторюється"); },
-  onReverseComplete: function(){ console.log("Зворотна анімація завершена"); },
-  onStart: function(){ console.log("Анімація починається"); },
-  onUpdate: function(){ console.log("Анімація виконала один кадр"); },
+// 6666666666666
+// let tween = gsap.to(".selector", {
+//   duration: 1,
+//   background: "#0026ffff",
+//   scale: 0,
+//   opacity: 0.5,
+//   paused: true,
+//   repeat: -1,
+//   yoyo: true,
+//   stagger: {
+//     each: 0.1,
+//     from: "center",
+//     grid: "auto",
+//     axis: "y",
+//   },
+//   ease: "power1.inOut",
+//   onComplete: function(){ console.log("Анімація завершена"); },
+//   onRepeat: function(){ console.log("Анімація повторюється"); },
+//   onReverseComplete: function(){ console.log("Зворотна анімація завершена"); },
+//   onStart: function(){ console.log("Анімація починається"); },
+//   onUpdate: function(){ console.log("Анімація виконала один кадр"); },
+// });
+
+// 7777777777777
+const tween = gsap.timeline({
+  repeat: 0,
+  repeatDelay: 1,
 });
+
+tween.to("h1", {
+  x: 0,
+  ease: "bounce.out",
+  duration: 1,
+});
+
+tween.to(
+  "footer",
+  {
+    x: 0,
+    ease: "bounce.out",
+    duration: 2,
+  },
+  "-=1"
+);
+
+tween.to(
+  ".selectors-timeline__item",
+  {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    ease: "bounce",
+    duration: 2,
+    stagger: 0.05,
+  },
+  "-=3"
+);
+
+tween.to(
+  "h1",
+  {
+    fontSize: "6rem",
+    color: "#478132ff",
+    duration: 0.2,
+  }
+);
+
+tween.to(
+  "footer",
+  {
+    rotation: -10,
+    duration: 0.2,
+  },
+  "-=0.2"
+);
